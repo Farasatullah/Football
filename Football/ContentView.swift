@@ -8,7 +8,12 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State private var numberCount = 0
+    @State private var numberBtnPressed = false
+
     var body: some View {
+        
         VStack {
             Text("What is Football to You?")
                 .font(.largeTitle)
@@ -24,9 +29,11 @@ struct ContentView: View {
                             .scaledToFit()
                             .frame(maxWidth: 100)
                             .padding(.leading,10)
-                        Text("What is Football to You?")
-                        Button("Play", role: .none) {
-                            print("Start Playing")
+                        Text("Football is life?")
+                        Button("Play \(numberBtnPressed ? "just Added one" : "Not yet added one")", role: .none) {
+                            print("new")
+                            numberBtnPressed = false
+
                         }
                         .frame(maxWidth: 100)
                     }
@@ -42,6 +49,11 @@ struct ContentView: View {
                         .scaledToFit()
                         .frame(maxWidth: 100)
                         .padding(.trailing,10)
+                    Button("Click me \(numberCount)") {
+                        print("button clicked")
+                        numberCount += 1
+                        numberBtnPressed = true
+                    }
                 }
 
 
